@@ -1,0 +1,33 @@
+/* Home.css */
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100vh;
+  text-align: center;
+}
+
+.text-container {
+  margin: 0 10px; /* Increase the horizontal margin */
+}
+
+.card-container {
+  margin: 0 10px; /* Increase the horizontal margin */
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.old {
+  z-index: 2;
+}
+
+.new {
+  z-index: 2;
+}
