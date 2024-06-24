@@ -1,0 +1,49 @@
+# Node modules
+node_modules/
+node_modules/*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+.DS_Store
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Ignore coverage files
+coverage/
+
+# Ignore generated files by npm
+package-lock.json
+
+# Ignore local development files
+local.env
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore .env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
