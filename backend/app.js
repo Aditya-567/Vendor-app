@@ -6,8 +6,10 @@ const errorHandler = require("./middlewares/errorHandlerMiddleware");
 
 
 const app = express();
+// mongo url .................................
+mongoose.connect("   //put the link here //")
 
-mongoose.connect("mongodb+srv://lextrone000567:f89ir0kgyLMIzoY8@vendor.ksxm8mw.mongodb.net/")
+  //..................................................
   .then(() => console.log("DB Connected"))
   .catch((e) => {
     console.error("DB Connection Error:", e);
