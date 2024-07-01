@@ -4,7 +4,7 @@ import React from "react";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { registerAPI } from "../../services/users/userService";
+import { registerAPI } from "../../services/users/userService.js";
 import AlertMessage from "../Alert/AlertMessage";
 
 // Validations
@@ -13,6 +13,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is required"),
   password: Yup.string().min(6, "Password must be at least 6 characters long").required("Password is required"),
   confirmPassword: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required("Confirming your password is required"),
+  role: Yup.string().oneOf(['vendor', 'admin', 'designer'], "Invalid role").required("Role is required")
 });
 
 const RegistrationForm = () => {
@@ -30,6 +31,7 @@ const RegistrationForm = () => {
       email: "",
       password: "",
       confirmPassword: "",
+      role: "vendor", // default role
     },
     // Validations
     validationSchema,
@@ -116,10 +118,27 @@ const RegistrationForm = () => {
         )}
       </div>
 
+      {/* Select Role */}
+      <div className="relative">
+        <select
+          id="role"
+          name="role"
+          {...formik.getFieldProps("role")}
+          className="pl-10 pr-4 py-2 w-full rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+        >
+          <option value="vendor">Vendor</option>
+          <option value="admin">Admin</option>
+          <option value="designer">Designer</option>
+        </select>
+        {formik.touched.role && formik.errors.role && (
+          <span className="text-xs text-red-500">{formik.errors.role}</span>
+        )}
+      </div>
+
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+        className="w-full bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         Register
       </button>

@@ -1,12 +1,12 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../model/User"); // Adjusted path to match the actual location of the User model
+const User = require("../model/User");
 
 const usersController = {
   register: asyncHandler(async (req, res) => {
-    const { username, email, password } = req.body;
-    if (!username || !email || !password) {
+    const { username, email, password, role } = req.body;
+    if (!username || !email || !password || !role) {
       throw new Error("All fields are required");
     }
     const userExists = await User.findOne({ email });
@@ -19,10 +19,12 @@ const usersController = {
       email,
       username,
       password: hashedPassword,
+      role,
     });
     res.json({
       username: userCreated.username,
       email: userCreated.email,
+      role: userCreated.role,
       id: userCreated._id,
     });
   }),
@@ -36,13 +38,14 @@ const usersController = {
     if (!isMatch) {
       throw new Error("Invalid login credentials");
     }
-    const token = jwt.sign({ id: user._id }, "your_jwt_secret", { expiresIn: "30d" });
+    const token = jwt.sign({ id: user._id, role: user.role }, "your_jwt_secret", { expiresIn: "30d" });
     res.json({
       message: "Login Success",
       token,
       id: user._id,
       email: user.email,
       username: user.username,
+      role: user.role,
     });
   }),
 };

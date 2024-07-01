@@ -6,7 +6,7 @@ import RFQsInProgress from "../Rfq/RFQsInProgress";
 import ReadyForQuote from "../Rfq/ReadyForQuote";
 import RejectedRFQs from "../Rfq/RejectedRFQs";
 
-const Dashboard = () => {
+const DesignerDashboard = () => {
   const [activeComponent, setActiveComponent] = useState("RFQsInProgress");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [rfqsInProgress, setRfqsInProgress] = useState([]);
@@ -87,4 +87,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DesignerDashboard;

@@ -1,15 +1,6 @@
-import axios from "axios";
-import { getUserFromStorage } from "../../utils/getUserFromStorage";
-import { BASE_URL } from "../../utils/url";
+import axios from 'axios';
 
-const token = getUserFromStorage();
+const API_URL = "http://localhost:8000/api/v1/users";
 
-export const loginAPI = async ({ email, password }) => {
-  const response = await axios.post(`${BASE_URL}/users/login`, { email, password });
-  return response.data;
-};
-
-export const registerAPI = async ({ email, password, username }) => {
-  const response = await axios.post(`${BASE_URL}/users/register`, { email, password, username });
-  return response.data;
-};
+export const registerAPI = (userData) => axios.post(`${API_URL}/register`, userData);
+export const loginAPI = (userData) => axios.post(`${API_URL}/login`, userData);
