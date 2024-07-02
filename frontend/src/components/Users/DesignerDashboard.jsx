@@ -35,7 +35,7 @@ const DesignerDashboard = () => {
 
   return (
     <div className="pl-2 pt-8 mx-10">
-      <div className="mx-8">
+      <div className="mx-8 bg-white shadow-lg rounded-lg p-6">
         <div className="flex justify-end pl-10 mb-6">
           <button
             className="relative m-2 inline-flex items-center gap-x-1.5 rounded-md bg-red-500 px-4 py-2 text-[16px] font-semibold text-white"

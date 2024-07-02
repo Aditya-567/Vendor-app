@@ -23,7 +23,7 @@ const VendorNavbar = () => {
                 <div className="flex h-16 justify-between items-center">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 pl-1">
-                            <img src={logo} alt="logo" className="h-7 w-18" />
+                            <img src={logo} alt="logo" className="h-18 w-24" />
                         </div>
                     </div>
                     <div className="hidden md:flex md:space-x-8">
