@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -17,6 +18,15 @@ const CreateRFQModal = ({ isOpen, onRequestClose, onSubmit }) => {
         cmContactNo: "",
         cmMailId: "",
         projectManager: "",
+        roomArea: "",
+        category: "",
+        subCategory: "",
+        designOptions: "",
+        uom: "",
+        materialSpecification: "",
+        overallQuantity: "",
+        overallSizes: "",
+        drawingImagesLink: "",
         // Add other fields as necessary
     });
 
@@ -36,10 +46,16 @@ const CreateRFQModal = ({ isOpen, onRequestClose, onSubmit }) => {
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             contentLabel="Create RFQ"
-            className="fixed top-16 left-0 right-0 bottom-0 flex items-center justify-center bg-white overflow-auto"
+            className="fixed inset-0 flex items-center justify-center p-4"
             overlayClassName="fixed inset-0 bg-black bg-opacity-50"
         >
-            <div className="w-full max-w-5xl p-8 bg-white rounded-lg shadow-lg">
+            <div className="relative w-full max-w-6xl p-8 bg-white rounded-lg shadow-lg">
+                <button
+                    onClick={onRequestClose}
+                    className="absolute top-4 right-4 text-gray-500 hover:text-red-700"
+                >
+                    <FaTimes size={24} />
+                </button>
                 <h2 className="text-xl font-bold mb-4 text-center">Customer Detail:</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-3 gap-4 mb-8">
@@ -142,30 +158,6 @@ const CreateRFQModal = ({ isOpen, onRequestClose, onSubmit }) => {
                     </div>
                     <h2 className="text-xl font-bold mb-4 text-center">Our Team:</h2>
                     <div className="grid grid-cols-3 gap-4 mb-8">
-                        <input
-                            type="text"
-                            name="cmContactNo"
-                            value={formData.cmContactNo}
-                            onChange={handleChange}
-                            placeholder="CM Contact No."
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="cmMailId"
-                            value={formData.cmMailId}
-                            onChange={handleChange}
-                            placeholder="CM Mail Id"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="projectManager"
-                            value={formData.projectManager}
-                            onChange={handleChange}
-                            placeholder="Project Manager"
-                            className="border p-2"
-                        />
                         <input
                             type="text"
                             name="roomArea"

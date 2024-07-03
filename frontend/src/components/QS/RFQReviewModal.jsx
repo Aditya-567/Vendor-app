@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const RFQReviewModal = ({ isOpen, onRequestClose, rfqData, handleSave }) => {
+const RFQReviewModal = ({ isOpen, onRequestClose, rfqData, handleSave, handleReject, handleAccept }) => {
     const [qsPrices, setQsPrices] = useState({});
     const [grandTotal, setGrandTotal] = useState(0);
 
@@ -15,8 +15,12 @@ const RFQReviewModal = ({ isOpen, onRequestClose, rfqData, handleSave }) => {
         setQsPrices(newQsPrices);
     };
 
-    const handleSubmit = () => {
-        handleSave(qsPrices);
+    const handleAcceptSubmit = () => {
+        handleAccept(qsPrices, rfqData);
+    };
+
+    const handleRejectSubmit = () => {
+        handleReject(rfqData);
     };
 
     useEffect(() => {
@@ -24,7 +28,7 @@ const RFQReviewModal = ({ isOpen, onRequestClose, rfqData, handleSave }) => {
             let total = 0;
             rfqData.items.forEach((item, index) => {
                 const qsPrice = parseFloat(qsPrices[index]) || 0;
-                total += item.designerPrice + qsPrice;
+                total += qsPrice;
             });
             setGrandTotal(total);
         };
@@ -106,14 +110,14 @@ const RFQReviewModal = ({ isOpen, onRequestClose, rfqData, handleSave }) => {
                 </table>
                 <div className="flex justify-end space-x-4">
                     <button
-                        onClick={handleSubmit}
+                        onClick={handleAcceptSubmit}
                         className="bg-red-500 text-white px-4 py-2 rounded"
                     >
                         <FontAwesomeIcon icon={faCircleCheck} size="lg" />  Accept and Publish RFQ
 
                     </button>
                     <button
-                        onClick={onRequestClose}
+                        onClick={handleRejectSubmit}
                         className="bg-red-500 text-white px-4 py-2 rounded"
                     >
                         <FontAwesomeIcon icon={faCircleXmark} size="lg" /> Reject RFQ
