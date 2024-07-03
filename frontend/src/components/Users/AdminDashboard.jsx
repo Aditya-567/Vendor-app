@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="pl-2 pt-8 mx-10">
+        <div className="pl-2 pt-8 mx-10 pb-10">
             <div className="mx-16 bg-white shadow-lg rounded-lg p-6">
                 <div className="flex justify-between border-b pb-4 mb-4">
                     <div className="flex space-x-4">
