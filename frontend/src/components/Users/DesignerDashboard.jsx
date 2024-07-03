@@ -35,7 +35,7 @@ const DesignerDashboard = () => {
 
   return (
     <div className="pl-2 pt-8 mx-10">
-      <div className="mx-8 bg-white shadow-lg rounded-lg p-6">
+      <div className="mx-8 bg-white shadow-2xl rounded-lg p-6">
         <div className="flex justify-end pl-10 mb-6">
           <button
             className="relative m-2 inline-flex items-center gap-x-1.5 rounded-md bg-red-500 px-4 py-2 text-[16px] font-semibold text-white"
@@ -44,7 +44,7 @@ const DesignerDashboard = () => {
             Create RFQ
           </button>
         </div>
-        <div className="flex justify-between border-b-2 border-gray-200 pb-2 mb-2">
+        <div className="flex justify-between border-b-2 border-gray-300 pb-2 mb-2">
           <button
             className={`px-4 py-2 ${activeComponent === "RFQsInProgress" ? "text-red-500 border-b-2 border-red-500" : "text-gray-700"}`}
             onClick={() => setActiveComponent("RFQsInProgress")}

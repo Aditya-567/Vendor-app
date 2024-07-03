@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import coursepic from "../../assets/course.png";
-import featurepic from "../../assets/feature.png";
 import homepic from "../../assets/home.png";
+import spin from "../../assets/l1.png";
 import logo from "../../assets/logo.png";
 
 const HeroSection = () => {
@@ -49,7 +49,7 @@ const HeroSection = () => {
 
   return (
     <div className="mt-10">
-      <header id="top" className="flex flex-col items-center bg-blue-600 text-white py-12 text-center">
+      <header id="top" className="flex flex-col items-center bg-blue-600 text-white py-12 text-center mt-16 mb-16">
         <Slider {...sliderSettings} className="w-4/5">
           <div className="mx-40">
             <div className="flex flex-row items-center space-x-8">
@@ -156,7 +156,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="pl-8">
-            <img src={featurepic} alt="Courses" className="h-[500px] w-[500px]" />
+            <img src={spin} alt="Courses" className="h-[500px] w-[500px] animate-spin-slow" />
           </div>
         </div>
       </section>
