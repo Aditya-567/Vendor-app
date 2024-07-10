@@ -8,7 +8,7 @@ import logo from "../../assets/logo.png";
 
 export default function PublicNavbar() {
   return (
-    <Disclosure as="nav" className="fixed top-0 left-0 right-0 bg-white border-b border-gray-300 shadow-lg z-50">
+    <Disclosure as="nav" className="fixed top-0 left-0 right-0 bg-white border-b border-gray-300 shadow-md z-50">
       {({ open }) => (
         <>
           <div className="mx-20">
@@ -28,24 +28,22 @@ export default function PublicNavbar() {
                 </div>
                 <div className="flex flex-shrink-0 items-center">
                   {/* Logo */}
-                  <img src={logo} alt="logo" className="h-18 w-24" />
+                  <img src={logo} alt="logo" className="h-15 w-20" />
                 </div>
                 <div className="hidden md:ml-6 md:flex md:space-x-8">
-                  <ScrollLink
-                    to="top"
-                    smooth={true}
-                    duration={500}
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-[18px] font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
+                  <Link
+                    to="/"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-md font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
                   >
                     Home
-                  </ScrollLink>
+                  </Link>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:space-x-8">
                   <ScrollLink
                     to="features"
                     smooth={true}
                     duration={500}
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-[18px] font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-md font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
                   >
                     Features
                   </ScrollLink>
@@ -55,7 +53,7 @@ export default function PublicNavbar() {
                     to="about"
                     smooth={true}
                     duration={500}
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-[18px] font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-md font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
                   >
                     About Us
                   </ScrollLink>
@@ -65,7 +63,7 @@ export default function PublicNavbar() {
                     to="testimonials"
                     smooth={true}
                     duration={500}
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-[18px] font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-md font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
                   >
                     Testimonials
                   </ScrollLink>
@@ -75,7 +73,7 @@ export default function PublicNavbar() {
                     to="contact"
                     smooth={true}
                     duration={500}
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-[18px] font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
+                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-md font-medium text-gray-900 hover:border-indigo-500 cursor-pointer"
                   >
                     Contact Us
                   </ScrollLink>
@@ -85,14 +83,14 @@ export default function PublicNavbar() {
                 <div className="flex-shrink-0">
                   <Link
                     to="/register"
-                    className="relative inline-flex items-center gap-x-1.5 rounded bg-blue-800 px-3 py-2 text-[18px] font-semibold text-white shadow-lg shadow-blue-200 hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:shadow-lg hover:shadow-blue-900/50 transform transition-transform duration-200 hover:scale-105"
+                    className="relative inline-flex items-center gap-x-1.5 rounded bg-blue-800 px-3 py-2 text-md font-semibold text-white shadow-md shadow-blue-200 hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:shadow-md hover:shadow-blue-900/50 transform transition-transform duration-200 hover:scale-105"
                   >
                     <FaRegUser className="-ml-0.5 h-5 w-5" aria-hidden="true" />
                     Register
                   </Link>
                   <Link
                     to="/login"
-                    className="relative ml-2 inline-flex items-center gap-x-1.5 rounded bg-blue-800 px-3 py-2 text-[18px] font-semibold text-white shadow-sm shadow-blue-200 hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:shadow-lg hover:shadow-blue-900/50 transform transition-transform duration-200 hover:scale-105"
+                    className="relative ml-2 inline-flex items-center gap-x-1.5 rounded bg-blue-800 px-3 py-2 text-md font-semibold text-white shadow-sm shadow-blue-200 hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:shadow-md hover:shadow-blue-900/50 transform transition-transform duration-200 hover:scale-105"
                   >
                     <RiLoginCircleLine
                       className="-ml-0.5 h-5 w-5"

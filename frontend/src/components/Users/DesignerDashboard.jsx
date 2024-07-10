@@ -11,8 +11,8 @@ const DesignerDashboard = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [rfqsInProgress, setRfqsInProgress] = useState([]);
 
-  const handleCreateRFQ = (rfq) => {
-    setRfqsInProgress([...rfqsInProgress, rfq]);
+  const handleCreateRFQ = (rfqs) => {
+    setRfqsInProgress([...rfqsInProgress, ...rfqs]);
     setActiveComponent("RFQsInProgress");
   };
 

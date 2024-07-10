@@ -48,12 +48,55 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="mt-10">
-      <header id="top" className="flex flex-col items-center bg-blue-600 text-white py-12 text-center mt-16 mb-16">
+    <div className="mt-4" >
+      <div>
+        <div className="relative w-full h-[90vh] overflow-hidden bg-blue-600 flex items-center justify-center">
+          <div className="absolute top-0 w-full h-full bg-blue-700 rounded-tl-full rounded-bl-full overflow-hidden" style={{ left: '52%' }}>
+            <div className="absolute top-0 left-0 w-full h-full bg-white" />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center px-8">
+            <div className="relative w-full h-full flex items-center justify-between">
+              <div className="w-1/2 text-white text-left mt-20">
+                <div>
+                  <div className="flex items-center">
+                    <p className="text-3xl font-bold mb-4">Welcome to &nbsp;</p>
+                  </div>
+                  <h1 className="text-8xl text-shadow-2xl font-bold" style={{ letterSpacing: '-0.02em' }}>VENDOR HUB</h1>
+                  <p className="mb-10">Your Ultimate Partner in Business Excellence</p>
+                  <p className="mb-20"> we understand the intricate dynamics of vendor management and the pivotal role<br />
+                    it plays in driving business success. Our platform is designed to streamline and<br />
+                    optimize your vendor interactions, ensuring a seamless and efficient procurement <br />
+                    process</p>
+                  <div className="flex relative">
+                    <h1 className="text-3xl">
+                      <Link to="top">what we offer :</Link>
+                    </h1>
+
+                  </div>
+                </div>
+
+
+
+              </div>
+              <div className=" pl-20 w-1/2 h-full flex items-center justify-center" >
+                <div className="w-[600px] h-[600px] rounded-full ">
+                  <img
+                    src={spin}
+                    alt="logo"
+                    className="w-full h-full object-cover animate-spin-slow"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="top" className="flex flex-col items-center bg-blue-600 text-white py-12 text-center">
         <Slider {...sliderSettings} className="w-4/5">
           <div className="mx-40">
             <div className="flex flex-row items-center space-x-8">
-              <img src={homepic} alt="Logo" className="h-96 w-96" />
+              <img src={homepic} alt="Logo" className="h-80 w-80" />
               <div className=" text-left">
                 <h1 className="text-5xl font-bold">Welcome to Our School.in</h1>
                 <p className=" text-lg mt-2">
@@ -77,7 +120,7 @@ const HeroSection = () => {
 
           <div className="mx-40">
             <div className="flex flex-row items-center space-x-8">
-              <img src={coursepic} alt="Logo" className="h-96 w-96" />
+              <img src={coursepic} alt="Logo" className="h-80 w-80" />
               <div className=" text-left">
                 <h1 className="text-5xl font-bold">Welcome to Our School.in</h1>
                 <p className=" text-lg mt-2">
@@ -100,7 +143,7 @@ const HeroSection = () => {
           </div>
           <div className="mx-30">
             <div className="flex flex-row items-center space-x-8">
-              <img src={logo} alt="Logo" className="h-96 w-108" />
+              <img src={logo} alt="Logo" className="h-80 w-98" />
               <div className=" text-left">
                 <h1 className="text-5xl font-bold">Welcome to Our School.in</h1>
                 <p className=" text-lg mt-2">
@@ -122,7 +165,7 @@ const HeroSection = () => {
             </div>
           </div>
         </Slider>
-      </header>
+      </div>
       <section id="features" className="py-10 text-center">
         <h1 className=" text-5xl font-bold mb-4">Features</h1>
         <div className="courses-container flex flex-col md:flex-row items-center justify-center">
@@ -156,16 +199,16 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="pl-8">
-            <img src={spin} alt="Courses" className="h-[500px] w-[500px] animate-spin-slow" />
+            <img src={spin} alt="Courses" className="h-[400px] w-[400px] animate-spin-slow" />
           </div>
         </div>
       </section>
       <section id="about" className="py-10 text-center">
-        <h1 className=" text-5xl font-bold mb-4">About Us</h1>
+        <h2 className=" text-5xl font-bold mb-4">About Us</h2>
       </section>
       <section id="testimonials" className="py-10 text-center bg-gradient-to-b from-white to-blue-500">
         <h2 className=" text-5xl font-bold mb-4">Testimonials</h2>
-        <div className="mt-8 items-center mx-64">
+        <div className="mt-8 items-center mx-44">
           <Slider {...testimonialSliderSettings}>
             <div className="bg-white rounded-lg shadow-lg p-6 mb-4 w-full max-w-lg mx-2 hover:shadow-lg hover:shadow-blue-900/50" style={{ boxShadow: '0 4px 6px rgba(255, 255, 255, 0.1)' }}>
               <p>

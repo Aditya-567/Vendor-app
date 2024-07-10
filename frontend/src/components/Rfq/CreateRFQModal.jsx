@@ -5,39 +5,66 @@ import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 const CreateRFQModal = ({ isOpen, onRequestClose, onSubmit }) => {
-    const [formData, setFormData] = useState({
-        customerName: "",
-        customerId: "",
-        city: "",
-        showroom: "",
-        projectAddress: "",
-        r2pPlannedDate: "",
-        designerName: "",
-        contactNo: "",
-        communityManager: "",
-        cmContactNo: "",
-        cmMailId: "",
-        projectManager: "",
-        roomArea: "",
-        category: "",
-        subCategory: "",
-        designOptions: "",
-        uom: "",
-        materialSpecification: "",
-        overallQuantity: "",
-        overallSizes: "",
-        drawingImagesLink: "",
-        // Add other fields as necessary
-    });
+    const [rfqItems, setRfqItems] = useState([
+        {
+            room: "",
+            category: "",
+            subCategory: "",
+            designSKU: "",
+            details: "",
+            uom: "",
+            materialDescription: "",
+            qty: "",
+            size: "",
+            twoDD: "",
+            designerPrice: "",
+            qsPrice: "",
+            comment: "",
+        },
+    ]);
 
-    const handleChange = (e) => {
+    const [file, setFile] = useState(null);
+
+    const handleChange = (index, e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const newRfqItems = [...rfqItems];
+        newRfqItems[index][name] = value;
+        setRfqItems(newRfqItems);
+    };
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+
+    const handleAddRow = () => {
+        setRfqItems([
+            ...rfqItems,
+            {
+                room: "",
+                category: "",
+                subCategory: "",
+                designSKU: "",
+                details: "",
+                uom: "",
+                materialDescription: "",
+                qty: "",
+                size: "",
+                twoDD: "",
+                designerPrice: "",
+                qsPrice: "",
+                comment: "",
+            },
+        ]);
+    };
+
+    const handleRemoveRow = (index) => {
+        const newRfqItems = rfqItems.filter((item, i) => i !== index);
+        setRfqItems(newRfqItems);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit(formData);
+        onSubmit(rfqItems);
         onRequestClose();
     };
 
@@ -49,195 +76,101 @@ const CreateRFQModal = ({ isOpen, onRequestClose, onSubmit }) => {
             className="fixed inset-0 flex items-center justify-center p-4"
             overlayClassName="fixed inset-0 bg-black bg-opacity-50"
         >
-            <div className="relative w-full max-w-6xl p-8 bg-white rounded-lg shadow-lg">
+            <div className="relative w-full max-w-7xl p-8 bg-white rounded-lg shadow-lg">
                 <button
                     onClick={onRequestClose}
                     className="absolute top-4 right-4 text-gray-500 hover:text-red-700"
                 >
                     <FaTimes size={24} />
                 </button>
-                <h2 className="text-xl font-bold mb-4 text-center">Customer Detail:</h2>
+
                 <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-3 gap-4 mb-8">
-                        <input
-                            type="text"
-                            name="customerName"
-                            value={formData.customerName}
-                            onChange={handleChange}
-                            placeholder="Customer Name"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="customerId"
-                            value={formData.customerId}
-                            onChange={handleChange}
-                            placeholder="Customer Id"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="city"
-                            value={formData.city}
-                            onChange={handleChange}
-                            placeholder="City"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="showroom"
-                            value={formData.showroom}
-                            onChange={handleChange}
-                            placeholder="Showroom"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="projectAddress"
-                            value={formData.projectAddress}
-                            onChange={handleChange}
-                            placeholder="Project Address"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="r2pPlannedDate"
-                            value={formData.r2pPlannedDate}
-                            onChange={handleChange}
-                            placeholder="R2P Planned Date"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="designerName"
-                            value={formData.designerName}
-                            onChange={handleChange}
-                            placeholder="Designer Name"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="contactNo"
-                            value={formData.contactNo}
-                            onChange={handleChange}
-                            placeholder="Contact No."
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="communityManager"
-                            value={formData.communityManager}
-                            onChange={handleChange}
-                            placeholder="Community Manager"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="cmContactNo"
-                            value={formData.cmContactNo}
-                            onChange={handleChange}
-                            placeholder="CM Contact No."
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="cmMailId"
-                            value={formData.cmMailId}
-                            onChange={handleChange}
-                            placeholder="CM Mail Id"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="projectManager"
-                            value={formData.projectManager}
-                            onChange={handleChange}
-                            placeholder="Project Manager"
-                            className="border p-2"
-                        />
+
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full bg-white border text-[12px] border-gray-300 mb-4">
+                            <thead>
+                                <tr className="bg-gray-300 border-b">
+                                    <th className="py-2 px-4 border-r">Room</th>
+                                    <th className="py-2 px-4 border-r">Category</th>
+                                    <th className="py-2 px-4 border-r">Sub Category</th>
+                                    <th className="py-2 px-4 border-r">Design / SKU</th>
+                                    <th className="py-2 px-4 border-r">Details (Auto)</th>
+                                    <th className="py-2 px-4 border-r">UOM (Auto)</th>
+                                    <th className="py-2 px-4 border-r">Material Description</th>
+                                    <th className="py-2 px-4 border-r">Qty</th>
+                                    <th className="py-2 px-4 border-r">Size (L*W*H)</th>
+                                    <th className="py-2 px-4 border-r">2DD</th>
+                                    <th className="py-2 px-4 border-r">Designer Price</th>
+                                    <th className="py-2 px-4 border-r">QS Price</th>
+                                    <th className="py-2 px-4 border-r">Comment</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {rfqItems.map((item, index) => (
+                                    <tr key={index} className="border-b">
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="room" value={item.room} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Living Room" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="category" value={item.category} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Carpentry" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="subCategory" value={item.subCategory} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Door Refurbishment" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="designSKU" value={item.designSKU} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Door Refurbishment Enamel Paint" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="details" value={item.details} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Removing existing paint + Surface Cleaning + Surface Base preparation + Repainting with Enamel paint." />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="uom" value={item.uom} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Nos." />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="materialDescription" value={item.materialDescription} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Non-Branded- ISI Graded Plywood, Laminate- Merino or Equivalent" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="number" name="qty" value={item.qty} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="10" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="size" value={item.size} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="100*100*100" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <select name="twoDD" value={item.twoDD} onChange={(e) => handleChange(index, e)} className="border p-1 w-full">
+                                                <option value="livingroom-2dd">Livingroom-2dd</option>
+                                                <option value="bedroom-2dd">Bedroom-2dd</option>
+                                                <option value="kitchen-2dd">Kitchen-2dd</option>
+                                            </select>
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="number" name="designerPrice" value={item.designerPrice} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="100" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="number" name="qsPrice" value={item.qsPrice} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="100" />
+                                        </td>
+                                        <td className="py-2 px-4 border-r">
+                                            <input type="text" name="comment" value={item.comment} onChange={(e) => handleChange(index, e)} className="border p-1 w-full" placeholder="Write comments here" />
+                                        </td>
+
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
-                    <h2 className="text-xl font-bold mb-4 text-center">Our Team:</h2>
-                    <div className="grid grid-cols-3 gap-4 mb-8">
-                        <input
-                            type="text"
-                            name="roomArea"
-                            value={formData.roomArea}
-                            onChange={handleChange}
-                            placeholder="Room / Area"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="category"
-                            value={formData.category}
-                            onChange={handleChange}
-                            placeholder="Category"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="subCategory"
-                            value={formData.subCategory}
-                            onChange={handleChange}
-                            placeholder="Sub Category"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="designOptions"
-                            value={formData.designOptions}
-                            onChange={handleChange}
-                            placeholder="Design / Finish Type"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="uom"
-                            value={formData.uom}
-                            onChange={handleChange}
-                            placeholder="UOM"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="materialSpecification"
-                            value={formData.materialSpecification}
-                            onChange={handleChange}
-                            placeholder="Material Specification"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="overallQuantity"
-                            value={formData.overallQuantity}
-                            onChange={handleChange}
-                            placeholder="Overall Quantity"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="overallSizes"
-                            value={formData.overallSizes}
-                            onChange={handleChange}
-                            placeholder="Overall Sizes (Total L,B,H)"
-                            className="border p-2"
-                        />
-                        <input
-                            type="text"
-                            name="drawingImagesLink"
-                            value={formData.drawingImagesLink}
-                            onChange={handleChange}
-                            placeholder="Drawing / Images Link"
-                            className="border p-2"
-                        />
-                    </div>
-                    <div className="flex justify-between">
-                        <button type="button" className="bg-gray-200 px-4 py-2">
-                            Add another Item
-                        </button>
-                        <button type="submit" className="bg-red-500 text-white px-4 py-2">
-                            Send To QS
-                        </button>
+                    <div className="flex justify-between text-[10px] mb-4">
+                        <div className="flex space-x-4">
+                            <input type="file" onChange={handleFileChange} className="hidden" id="file-upload" />
+                            <label htmlFor="file-upload" className="bg-gray-200 px-4 py-2 cursor-pointer">Upload Site Images</label>
+                            <button className="bg-gray-200 px-4 py-2">Upload Site Inspection Report</button>
+                            <button className="bg-gray-200 px-4 py-2">Masking Date</button>
+                            <button className="bg-gray-200 px-4 py-2">Handover Date</button>
+                        </div>
+                        <div className="flex space-x-4">
+                            <button type="button" onClick={handleAddRow} className="bg-gray-200 px-4 py-2">Add another Item</button>
+                            <button type="submit" className="bg-red-500 text-white px-4 py-2">Add RFQ Price to Quote</button>
+                            <button type="button" onClick={handleSubmit} className="bg-red-500 text-white px-4 py-2">Send For Review</button>
+                        </div>
                     </div>
                 </form>
             </div>

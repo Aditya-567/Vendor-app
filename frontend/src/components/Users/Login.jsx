@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="mt-40 max-w-md mx-auto my-10 bg-white p-6 rounded-xl shadow-lg space-y-6 border border-gray-200"
+      className="mt-40 max-w-md mx-auto my-10 bg-white p-6 rounded-xl shadow-2xl space-y-6 border border-gray-200"
     >
       <h2 className="text-3xl font-semibold text-center text-gray-800">Log In</h2>
       {isLoading && <AlertMessage type="loading" message="Loading...." />}
