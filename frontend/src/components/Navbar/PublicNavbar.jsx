@@ -1,6 +1,5 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { FaRegUser } from "react-icons/fa";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
@@ -81,16 +80,16 @@ export default function PublicNavbar() {
               </div>
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <Link
+                  {/* <Link
                     to="/register"
                     className="relative inline-flex items-center gap-x-1.5 rounded bg-blue-800 px-3 py-2 text-md font-semibold text-white shadow-md shadow-blue-200 hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:shadow-md hover:shadow-blue-900/50 transform transition-transform duration-200 hover:scale-105"
                   >
                     <FaRegUser className="-ml-0.5 h-5 w-5" aria-hidden="true" />
                     Register
-                  </Link>
+                  </Link> */}
                   <Link
                     to="/login"
-                    className="relative ml-2 inline-flex items-center gap-x-1.5 rounded bg-blue-800 px-3 py-2 text-md font-semibold text-white shadow-sm shadow-blue-200 hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:shadow-md hover:shadow-blue-900/50 transform transition-transform duration-200 hover:scale-105"
+                    className="inline-flex h-10 items-center justify-center rounded-full bg-red-500 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-300 disabled:pointer-events-none disabled:opacity-50"
                   >
                     <RiLoginCircleLine
                       className="-ml-0.5 h-5 w-5"
