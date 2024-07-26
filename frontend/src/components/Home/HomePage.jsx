@@ -3,9 +3,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import coursepic from "../../assets/course.png";
-import hero from "../../assets/hero.png";
+// import hero from "../../assets/hero.png";
+
+import feature from "../../assets/fec.png";
 import homepic from "../../assets/home.png";
-import logo from "../../assets/logo.png";
+import lotext from "../../assets/lotext.png";
+import np from "../../assets/np.png";
 
 export default function HeroSection() {
   const sliderSettings = {
@@ -21,58 +24,61 @@ export default function HeroSection() {
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-cream">
-      <div className="mx-10">
+      <div className="mx-20">
         <main className="flex-1">
           <section className="w-full py-12 sm:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
               <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
                 <div className="flex flex-col justify-center space-y-4">
+                  <div className="inline-block rounded-2xl bg-gray-300 px-3 py-1 text-sm w-fit">
+                    Design, Manage, and Validate
+                  </div>
                   <div className="space-y-2">
-                    <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                      VENDOR.hub - The Complete Platform for Designers, Vendors, and Admins
-                    </h1>
+                    <img src={lotext} alt="Logo" className="h-30 w-200 rounded-2xl mb-10" />
+                    <p className="text-2xl font-bold tracking-tighter sm:text-2xl xl:text-2xl/none">
+                      The Complete Platform for Designers, Vendors, and Admins
+                    </p>
                     <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                      Discover, connect, and manage your vendor relationships with VENDOR.hub. Empower designers, validate
-                      vendor details, and streamline your supply chain.
+                      Discover, connect, and manage your vendor relationships effortlessly with VENDOR.hub. Empower designers, validate vendor details, and streamline your supply chain for maximum efficiency.
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 min-[400px]:flex-row">
                     <a
-                      href="#"
-                      className="inline-flex h-10 items-center justify-center rounded-full bg-red-500 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-300 disabled:pointer-events-none disabled:opacity-50"
+                      href="/register"
+                      className="inline-flex h-10 items-center justify-center rounded-full bg-red-500 px-8 text-sm shadow-2xl font-medium text-white  transition-colors hover:bg-red-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-300 disabled:pointer-events-none disabled:opacity-50"
                     >
-                      Get Started
+                      Register
                     </a>
                     <a
-                      href="#"
-                      className="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-8 text-sm font-medium text-gray-800 shadow-sm transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 disabled:pointer-events-none disabled:opacity-50"
+                      href="#slider"
+                      className="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-8 text-sm font-medium text-gray-800 shadow-xl transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 disabled:pointer-events-none disabled:opacity-50"
                     >
-                      Contact Sales
+                      Features
                     </a>
                   </div>
                 </div>
                 <img
-                  src={hero}
+                  src={np}
                   width="550"
                   height="550"
                   alt="Hero"
                   style={{ borderRadius: "40px" }}
-                  className="shadow-4xl"
+                  className="shadow-2xl border border-gray-200"
                 />
               </div>
             </div>
           </section>
 
           {/* slider---> */}
-          <div className="flex flex-col items-center mt-10">
-            <Slider {...sliderSettings} className="w-4/5">
+          <div id="slider" className="flex flex-col items-center mt-10">
+            <Slider {...sliderSettings} className="w-4/5 ">
               <div >
                 <div className="flex flex-row items-center space-x-8">
-                  <img src={homepic} alt="Logo" className="h-80 w-80" />
+                  <img src={homepic} alt="Logo" className="h-80 w-80 " />
                   <div className="text-left">
-                    <h1 className="text-5xl font-bold">Welcome to Our School.in</h1>
+                    <h1 className="text-5xl font-bold">Welcome to VENDOR.hub</h1>
                     <p className="text-lg mt-2">
-                      We are a school dedicated to helping you achieve your goals.
+                      We are a platform designed to help you discover, connect, and manage your vendor relationships.
                       <br />
                       Explore our wide range of courses tailored to your needs.
                       <br />
@@ -84,11 +90,11 @@ export default function HeroSection() {
 
               <div className="">
                 <div className="flex flex-row items-center space-x-8">
-                  <img src={coursepic} alt="Logo" className="h-80 w-80" />
+                  <img src={coursepic} alt="Logo" className="h-80 w-80 " />
                   <div className="text-left">
-                    <h1 className="text-5xl font-bold">Welcome to Our School.in</h1>
+                    <h1 className="text-5xl font-bold">Welcome to VENDOR.hub</h1>
                     <p className="text-lg mt-2">
-                      We are a school dedicated to helping you achieve your goals.
+                      We are a platform designed to help you discover, connect, and manage your vendor relationships.
                       <br />
                       Explore our wide range of courses tailored to your needs.
                       <br />
@@ -98,7 +104,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <div className="">
+              {/* <div className="">
                 <div className="flex flex-row items-center space-x-8">
                   <img src={logo} alt="Logo" className="h-80 w-98" />
                   <div className="text-left">
@@ -112,26 +118,26 @@ export default function HeroSection() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </Slider>
           </div>
           {/* slider */}
 
-          <section className="w-full py-12 md:py-24 lg:py-32">
+          <section className="w-full py-12 md:py-24 lg:py-32 mr-10">
             <div className="container px-4 md:px-6">
-              <div className="grid items-center gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
+              <div className="grid items-center gap-2 md:grid-cols-[1fr_600px] ">
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="space-y-2">
-                    <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm">
+                    <div className="inline-block rounded-2xl bg-gray-300 px-3 py-1 text-sm">
                       Designer, Vendor, and Admin Features
                     </div>
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                      Empower Designers, Vendors, and Admins to Discover, Connect, and Manage
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                      Empower Designers, Vendors, and<br />
+                      Admins to Connect, and Manage
                     </h2>
-                    <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                      Designers can easily search, filter, and view vendor profiles, portfolios, and capabilities. Vendors
-                      can manage their profiles and submit details for validation. Admins can review and approve or reject
-                      vendor submissions.
+                    <p className="max-w-[650px] text-gray-600 md:text-xl/relaxed ">
+
+                      Designers can effortlessly search, filter, and view vendor profiles, portfolios, and capabilities. Vendors have the ability to manage their profiles and submit details for validation. Admins are empowered to review and approve or reject vendor submissions, ensuring quality and reliability.
                     </p>
                   </div>
                   <ul className="grid gap-2 py-4">
@@ -161,18 +167,19 @@ export default function HeroSection() {
                     </a>
                     <a
                       href="#"
-                      className="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-8 text-sm font-medium text-gray-800 shadow-sm transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 disabled:pointer-events-none disabled:opacity-50"
+                      className="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-8 text-sm font-medium text-gray-800 shadow-xl transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 disabled:pointer-events-none disabled:opacity-50"
                     >
                       Contact Sales
                     </a>
                   </div>
                 </div>
                 <img
-                  src="/placeholder.svg"
+                  src={feature}
                   width="550"
-                  height="310"
+                  height="550"
                   alt="Image"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+                  style={{ borderRadius: "40px", border: "1px solid #e0e0e0" }}
+                  className="shadow-2xl border border-gray-200 "
                 />
               </div>
             </div>
@@ -181,16 +188,16 @@ export default function HeroSection() {
           <section className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
               <div className="space-y-4">
-                <div className="space-y-2 text-center">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">What Our Customers Say</h2>
-                  <p className="max-w-[600px] text-gray-600 md:text-xl">
+                <div className="space-y-2 text-center mb-10">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-10">What Our Customers Say</h2>
+                  <p className=" text-gray-600 md:text-xl ">
                     Hear from designers, vendors, and admins who have transformed their supply chain with VENDOR.hub.
                   </p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  <div className="rounded-lg border bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="rounded-2xl border bg-white p-6 shadow-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="space-y-2">
-                      <p className="text-lg font-medium leading-relaxed">
+                      <p className="text-md font-medium leading-relaxed">
                         "VENDOR.hub has been a game-changer for our design team. The comprehensive vendor profiles and
                         advanced search tools have made it so much easier to find the perfect partners for our projects."
                       </p>
@@ -203,9 +210,9 @@ export default function HeroSection() {
                       </div>
                     </blockquote>
                   </div>
-                  <div className="rounded-lg border bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="rounded-2xl border bg-white p-6 shadow-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="space-y-2">
-                      <p className="text-lg font-medium leading-relaxed">
+                      <p className="text-md font-medium leading-relaxed">
                         "As a vendor, VENDOR.hub has made it so much easier to manage my profile and submit details for
                         validation. The platform's vendor management tools have streamlined our entire supply chain
                         process."
@@ -219,9 +226,9 @@ export default function HeroSection() {
                       </div>
                     </blockquote>
                   </div>
-                  <div className="rounded-lg border bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="rounded-2xl border bg-white p-6 shadow-xl hover:shadow-xl transition-shadow duration-300">
                     <blockquote className="space-y-2">
-                      <p className="text-lg font-medium leading-relaxed">
+                      <p className="text-md font-medium leading-relaxed">
                         "As an admin, VENDOR.hub has been a lifesaver. The vendor validation and approval process is so
                         much more efficient, and the platform's reporting tools give us valuable insights into our supply
                         chain."
@@ -258,7 +265,7 @@ export default function HeroSection() {
                   </a>
                   <a
                     href="#"
-                    className="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-8 text-sm font-medium text-gray-800 shadow-sm transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 disabled:pointer-events-none disabled:opacity-50"
+                    className="inline-flex h-10 items-center justify-center rounded-full border border-gray-300 bg-white px-8 text-sm font-medium text-gray-800 shadow-md transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-300 disabled:pointer-events-none disabled:opacity-50"
                   >
                     Schedule a Demo
                   </a>
